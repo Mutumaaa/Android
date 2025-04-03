@@ -9,9 +9,11 @@ fun AboutScreen(){
 
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun AboutScreenPreview(){
+
+    AboutScreen()
 
 
 
