@@ -44,7 +44,7 @@ fun HomeScreen(){
             )
 
         Image(
-            painter = painterResource(R.drawable.ecommerce),
+            painter = painterResource(R.drawable.img),
             contentDescription = "ecommerce"
         )
 
