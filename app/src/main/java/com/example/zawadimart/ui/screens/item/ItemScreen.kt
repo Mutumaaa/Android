@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
@@ -41,6 +43,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.zawadimart.R
 import com.example.zawadimart.ui.theme.newaesthetic
 import com.example.zawadimart.ui.theme.neworange
@@ -48,7 +52,7 @@ import com.example.zawadimart.ui.theme.newwhite
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ItemScreen(){
+fun ItemScreen(navController: NavController){
 
     Column (
         modifier = Modifier.fillMaxSize()
@@ -109,204 +113,404 @@ fun ItemScreen(){
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        //Row
-        Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
-            Image(
-                painter = painterResource(R.drawable.products),
-                contentDescription = "ecommerce",
-                modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
-                contentScale = ContentScale.FillWidth,
-            )
-            Spacer(modifier = Modifier.width(10.dp))
-
-
-            Column {
-
-                Text(
-                    text = "SmartHome products",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.ExtraBold
+        Column (modifier = Modifier.verticalScroll(rememberScrollState())){
+            //Row
+            Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.products),
+                    contentDescription = "ecommerce",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth,
                 )
-                Text(
-                    text = "KSH 2400",
-                    fontSize = 14.sp,
-                    textDecoration = TextDecoration.LineThrough
-                )
-                Text(
-                    text = "Price :KSH 1600",
-                    fontSize = 16.sp,
-
-                )
-
-                Row {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
-                }
-
-            }
-            Button(onClick = {},
-                colors = ButtonDefaults.buttonColors(neworange),
-                shape = RoundedCornerShape(10.dp)
-
-            ) {
-                Text(text = "Add to Cart")
-            }
+                Spacer(modifier = Modifier.width(10.dp))
 
 
+                Column {
 
-
-
-        }
-        //End of row
-        Spacer(modifier = Modifier.height(10.dp))
-
-        //Row
-        Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
-            Image(
-                painter = painterResource(R.drawable.products),
-                contentDescription = "ecommerce",
-                modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
-                contentScale = ContentScale.FillWidth,
-            )
-            Spacer(modifier = Modifier.width(10.dp))
-
-
-            Column {
-
-                Text(
-                    text = "SmartHome products",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.ExtraBold
-                )
-                Text(
-                    text = "KSH 2400",
-                    fontSize = 14.sp,
-                    textDecoration = TextDecoration.LineThrough
-                )
-                Text(
-                    text = "Price :KSH 1600",
-                    fontSize = 16.sp,
-
+                    Text(
+                        text = "SmartHome products",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.ExtraBold
                     )
-
-                Row {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
-                }
-
-            }
-            Button(onClick = {},
-                colors = ButtonDefaults.buttonColors(neworange),
-                shape = RoundedCornerShape(10.dp)
-
-            ) {
-                Text(text = "Add to Cart")
-            }
-
-
-
-
-
-        }
-        //End of row
-        Spacer(modifier = Modifier.height(10.dp))
-
-        //Row
-        Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
-            Image(
-                painter = painterResource(R.drawable.products),
-                contentDescription = "ecommerce",
-                modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
-                contentScale = ContentScale.FillWidth,
-            )
-            Spacer(modifier = Modifier.width(10.dp))
-
-
-            Column {
-
-                Text(
-                    text = "SmartHome products",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.ExtraBold
-                )
-                Text(
-                    text = "KSH 2400",
-                    fontSize = 14.sp,
-                    textDecoration = TextDecoration.LineThrough
-                )
-                Text(
-                    text = "Price :KSH 1600",
-                    fontSize = 16.sp,
-
+                    Text(
+                        text = "KSH 2400",
+                        fontSize = 14.sp,
+                        textDecoration = TextDecoration.LineThrough
                     )
+                    Text(
+                        text = "Price :KSH 1600",
+                        fontSize = 16.sp,
 
-                Row {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
+                        )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
+                    }
+
+                }
+                Button(onClick = {},
+                    colors = ButtonDefaults.buttonColors(neworange),
+                    shape = RoundedCornerShape(10.dp)
+
+                ) {
+                    Text(text = "Add to Cart")
                 }
 
+
+
+
+
             }
-            Button(onClick = {},
-                colors = ButtonDefaults.buttonColors(neworange),
-                shape = RoundedCornerShape(10.dp)
+            //End of row
+            Spacer(modifier = Modifier.height(10.dp))
 
-            ) {
-                Text(text = "Add to Cart")
-            }
-
-
-
-
-
-        }
-        //End of row
-        Spacer(modifier = Modifier.height(10.dp))
-
-        //Row
-        Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
-            Image(
-                painter = painterResource(R.drawable.products),
-                contentDescription = "ecommerce",
-                modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
-                contentScale = ContentScale.FillWidth,
-            )
-            Spacer(modifier = Modifier.width(10.dp))
-
-
-            Column {
-
-                Text(
-                    text = "SmartHome products",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.ExtraBold
+            //Row
+            Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.products),
+                    contentDescription = "ecommerce",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth,
                 )
-                Text(
-                    text = "KSH 2400",
-                    fontSize = 14.sp,
-                    textDecoration = TextDecoration.LineThrough
-                )
-                Text(
-                    text = "Price :KSH 1600",
-                    fontSize = 16.sp,
+                Spacer(modifier = Modifier.width(10.dp))
 
+
+                Column {
+
+                    Text(
+                        text = "SmartHome products",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.ExtraBold
                     )
+                    Text(
+                        text = "KSH 2400",
+                        fontSize = 14.sp,
+                        textDecoration = TextDecoration.LineThrough
+                    )
+                    Text(
+                        text = "Price :KSH 1600",
+                        fontSize = 16.sp,
 
-                Row {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
+                        )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
+                    }
+
+                }
+                Button(onClick = {},
+                    colors = ButtonDefaults.buttonColors(neworange),
+                    shape = RoundedCornerShape(10.dp)
+
+                ) {
+                    Text(text = "Add to Cart")
                 }
 
+
+
+
+
             }
-            Button(onClick = {},
-                colors = ButtonDefaults.buttonColors(neworange),
-                shape = RoundedCornerShape(10.dp)
+            //End of row
+            Spacer(modifier = Modifier.height(10.dp))
 
-            ) {
-                Text(text = "Add to Cart")
+            //Row
+            Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.products),
+                    contentDescription = "ecommerce",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth,
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+
+
+                Column {
+
+                    Text(
+                        text = "SmartHome products",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    )
+                    Text(
+                        text = "KSH 2400",
+                        fontSize = 14.sp,
+                        textDecoration = TextDecoration.LineThrough
+                    )
+                    Text(
+                        text = "Price :KSH 1600",
+                        fontSize = 16.sp,
+
+                        )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
+                    }
+
+                }
+                Button(onClick = {},
+                    colors = ButtonDefaults.buttonColors(neworange),
+                    shape = RoundedCornerShape(10.dp)
+
+                ) {
+                    Text(text = "Add to Cart")
+                }
+
+
+
+
+
+            }
+            //End of row
+            Spacer(modifier = Modifier.height(10.dp))
+
+            //Row
+            Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.products),
+                    contentDescription = "ecommerce",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth,
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+
+
+                Column {
+
+                    Text(
+                        text = "SmartHome products",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    )
+                    Text(
+                        text = "KSH 2400",
+                        fontSize = 14.sp,
+                        textDecoration = TextDecoration.LineThrough
+                    )
+                    Text(
+                        text = "Price :KSH 1600",
+                        fontSize = 16.sp,
+
+                        )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
+                    }
+
+                }
+                Button(onClick = {},
+                    colors = ButtonDefaults.buttonColors(neworange),
+                    shape = RoundedCornerShape(10.dp)
+
+                ) {
+                    Text(text = "Add to Cart")
+                }
+
+
+
+
+
             }
 
+            //Row
+            Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.products),
+                    contentDescription = "ecommerce",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth,
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+
+
+                Column {
+
+                    Text(
+                        text = "SmartHome products",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    )
+                    Text(
+                        text = "KSH 2400",
+                        fontSize = 14.sp,
+                        textDecoration = TextDecoration.LineThrough
+                    )
+                    Text(
+                        text = "Price :KSH 1600",
+                        fontSize = 16.sp,
+
+                        )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
+                    }
+
+                }
+                Button(onClick = {},
+                    colors = ButtonDefaults.buttonColors(neworange),
+                    shape = RoundedCornerShape(10.dp)
+
+                ) {
+                    Text(text = "Add to Cart")
+                }
 
 
 
 
+
+            }
+            //End of row
+            Spacer(modifier = Modifier.height(10.dp))
+
+            //Row
+            Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.products),
+                    contentDescription = "ecommerce",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth,
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+
+
+                Column {
+
+                    Text(
+                        text = "SmartHome products",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    )
+                    Text(
+                        text = "KSH 2400",
+                        fontSize = 14.sp,
+                        textDecoration = TextDecoration.LineThrough
+                    )
+                    Text(
+                        text = "Price :KSH 1600",
+                        fontSize = 16.sp,
+
+                        )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
+                    }
+
+                }
+                Button(onClick = {},
+                    colors = ButtonDefaults.buttonColors(neworange),
+                    shape = RoundedCornerShape(10.dp)
+
+                ) {
+                    Text(text = "Add to Cart")
+                }
+
+
+
+
+
+            }
+            //End of row
+            Spacer(modifier = Modifier.height(10.dp))
+
+            //Row
+            Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.products),
+                    contentDescription = "ecommerce",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth,
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+
+
+                Column {
+
+                    Text(
+                        text = "SmartHome products",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    )
+                    Text(
+                        text = "KSH 2400",
+                        fontSize = 14.sp,
+                        textDecoration = TextDecoration.LineThrough
+                    )
+                    Text(
+                        text = "Price :KSH 1600",
+                        fontSize = 16.sp,
+
+                        )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
+                    }
+
+                }
+                Button(onClick = {},
+                    colors = ButtonDefaults.buttonColors(neworange),
+                    shape = RoundedCornerShape(10.dp)
+
+                ) {
+                    Text(text = "Add to Cart")
+                }
+
+
+
+
+
+            }
+            //End of row
+            Spacer(modifier = Modifier.height(10.dp))
+
+            //Row
+            Row(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.products),
+                    contentDescription = "ecommerce",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth,
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+
+
+                Column {
+
+                    Text(
+                        text = "SmartHome products",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    )
+                    Text(
+                        text = "KSH 2400",
+                        fontSize = 14.sp,
+                        textDecoration = TextDecoration.LineThrough
+                    )
+                    Text(
+                        text = "Price :KSH 1600",
+                        fontSize = 16.sp,
+
+                        )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Yellow)
+                    }
+
+                }
+                Button(onClick = {},
+                    colors = ButtonDefaults.buttonColors(neworange),
+                    shape = RoundedCornerShape(10.dp)
+
+                ) {
+                    Text(text = "Add to Cart")
+                }
+
+
+
+
+
+            }
+            //End of row
         }
-        //End of row
 
 
 
@@ -327,7 +531,7 @@ fun ItemScreen(){
 @Composable
 fun ItemScreenPreview(){
 
-    ItemScreen()
+    ItemScreen(rememberNavController())
 
 
 
