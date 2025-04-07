@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.zawadimart.ui.screens.about.AboutScreen
 import com.example.zawadimart.ui.screens.home.HomeScreen
+import com.example.zawadimart.ui.screens.intent.IntentScreen
 import com.example.zawadimart.ui.screens.item.ItemScreen
 import com.example.zawadimart.ui.screens.start.StartScreen
 
@@ -34,6 +35,9 @@ fun AppNavHost(
         }
         composable(ROUT_START) {
             StartScreen(navController)
+        }
+        composable(ROUT_INTENT) {
+            IntentScreen(navController)
         }
 
     }

@@ -13,9 +13,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Button
@@ -37,6 +39,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
@@ -49,6 +52,7 @@ import com.example.zawadimart.R
 import com.example.zawadimart.ui.theme.newaesthetic
 import com.example.zawadimart.ui.theme.neworange
 import com.example.zawadimart.ui.theme.newwhite
+import com.navigation.ROUT_INTENT
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,7 +61,8 @@ fun ItemScreen(navController: NavController){
     Column (
         modifier = Modifier.fillMaxSize()
     ){
-
+        val mContext = LocalContext.current
+       //Topappbar
         TopAppBar(
             title = { Text(text = "Products") },
             colors = TopAppBarDefaults.topAppBarColors(
@@ -80,16 +85,20 @@ fun ItemScreen(navController: NavController){
                 }
                 IconButton(onClick = {}) {
                     Icon(imageVector = Icons.Default.Notifications, contentDescription = "" )
-                    Icon(imageVector = Icons.Default.Notifications, contentDescription = "" )
-                    Icon(imageVector = Icons.Default.Notifications, contentDescription = "" )
-                    Icon(imageVector = Icons.Default.Notifications, contentDescription = "" )
-                    Icon(imageVector = Icons.Default.Notifications, contentDescription = "" )
+
+
+                }
+                IconButton(onClick = {
+                    navController.navigate(ROUT_INTENT)
+                }) {
+                    Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "" )
+
 
                 }
 
             }
         )
-        //End
+        //End pf topappabr
         Image(
             painter = painterResource(R.drawable.ecommerce),
             contentDescription = "ecommerce",
